@@ -29,7 +29,7 @@ public class Game1 : Game
     Player plr = new Player();
     Camera camera;
     private string filePath = "map.json";
-    private string fileName = "level.json";
+    private string fileName = "level2.json";
     MapManager mapManager = new MapManager();    
     enum Room
     {
@@ -78,6 +78,7 @@ public class Game1 : Game
         this.camera = new Camera(_graphics.GraphicsDevice);
         quickSave.Plr = plr;
         plr.TileMap = tiles;
+        quickSave.Tilemap = tiles;
 
         //tiles.TilesList = MapManager.LoadMap(filePath);
 
@@ -112,20 +113,19 @@ public class Game1 : Game
         int xPos = 0;
         int yPos = 0;
 
-        List<Vector2> positions = new List<Vector2>();
+        List<Tile> tileList = new List<Tile>();
 
         // Iterate through the array and print each element
         for (int i = 0; i < levelData.GetLength(0); i++)
         {            
             for (int j = 0; j < levelData.GetLength(1); j++)
             {
-                if (levelData[i, j] > 0) {
-                    positions.Add(new Vector2(xPos, yPos));
-                }
-                xPos += 100;
+                tileList.Add(new Tile(new Vector2(xPos, yPos), levelData[i, j]));
+                
+                xPos += Tile.TileWidth;
                 Console.Write(levelData[i, j] + " ");
             }
-            yPos += 100;
+            yPos += Tile.TileHeight;
             xPos = 0;
             Console.WriteLine();
         }
@@ -133,7 +133,7 @@ public class Game1 : Game
  
  
  
-          tiles.TilesList = positions;
+          tiles.TilesList = tileList;
     }
 
 
@@ -268,11 +268,31 @@ public class Game1 : Game
             _spriteBatch.Draw(down, new Vector2(6800, 1000), Color.White);
 
             _spriteBatch.Draw(playerSprite, plr.Position, Color.White);
+            _spriteBatch.Draw(undoPointSprite, quickSave.UndoPosition + new Vector2(plrHeight/4 - 16, plrHeight/2 - 16), Color.White);
 
 
-            foreach (Vector2 tile in tiles.TilesList)
+            foreach (Tile tile in tiles.TilesList)
             {
-                _spriteBatch.Draw(tileSprite, tile, Color.White);
+                switch(tile.tileType) {
+                    case 0:
+                        // no draw
+                        break;
+                    case 1:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.White);
+                        break;
+                    case 2:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.DarkOrange);
+                        break;
+                    case 3:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Green);
+                        break;
+                    case 4:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Yellow);
+                        break;
+                    case 5:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Purple);
+                        break;
+                }                
             }
 
             

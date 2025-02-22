@@ -126,15 +126,15 @@ public class Player
         bool wasColliding = isColliding;
         isColliding = false;
 
-          foreach (Vector2 tile in tileMap.TilesList)
+        foreach (Tile tile in tileMap.TilesList)
         {
             if (IsIntersecting(tile, position))
             {
                 isColliding = true;
                 
-                if(position.Y > tile.Y - plrHeight)
+                if(position.Y > tile.tilePos.Y - plrHeight)
                 {
-                    position.Y = tile.Y - plrHeight;
+                    position.Y = tile.tilePos.Y - plrHeight;
                     jump = 0;
                     vel = 0;
                     if (jetFuel <= maxJetFuel)
@@ -147,12 +147,10 @@ public class Player
                 
                 
               
-                Console.WriteLine($"Collision detected at Tile: ({tile.X}, {tile.Y})");
+                Console.WriteLine($"Collision detected at Tile: ({tile.tilePos.X}, {tile.tilePos.Y})");
                 break; // No need to check further; collision detected
             }
         }
-
-       
        
        
         if (position.Y > bgHeight - floorHeight - plrHeight)
@@ -170,11 +168,18 @@ public class Player
         
     }
 
-    private bool IsIntersecting(Vector2 objA, Vector2 objB) {
+    private bool IsIntersecting(Tile tile, Vector2 objB) {
         int widthA = 100;
         int widthB = 100;
         int heightA = 100;
         int heightB = 200;
+
+    if (tile.tileType == 0)
+    {
+        return false;
+    }
+
+    var objA = tile.tilePos;
 
     return !(objA.X > objB.X + widthB) &&
        !(objA.X + widthA < objB.X) &&
