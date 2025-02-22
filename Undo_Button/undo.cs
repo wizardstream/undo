@@ -70,9 +70,11 @@ public class Undo
             }
             else
             {
-                int newRand = rand.Next(0, tileMap.TilesList.Count);
-                var tileType = rand.Next(0, 10);
-                tileMap.TilesList[newRand].tileType = tileType;
+                int newRand = rand.Next(0, tileMap.TilesList.Count);                
+                if (tileMap.TilesList[newRand].tileType != 6) {
+                    var tileType = rand.Next(0, 6);
+                    tileMap.TilesList[newRand].tileType = tileType;
+                }
             }
             plr.Position = undoPosition;
             plr.JetFuel = saveJetfuel;

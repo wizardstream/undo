@@ -292,6 +292,9 @@ public class Game1 : Game
                     case 5:
                         _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Purple);
                         break;
+                    case 6:
+                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Red);
+                        break;
                 }                
             }
 

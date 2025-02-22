@@ -19,7 +19,7 @@ public class Player
     private float vel = 0;
     const int bgHeight = 3125;
     const int floorHeight = 400;
-    const int plrHeight = 200;
+    const int plrHeight = 198;
     const int terminalVel = 373;
     private Tiles tileMap;
     private bool isColliding = false;
@@ -169,10 +169,10 @@ public class Player
     }
 
     private bool IsIntersecting(Tile tile, Vector2 objB) {
-        int widthA = 100;
-        int widthB = 100;
-        int heightA = 100;
-        int heightB = 200;
+        int widthA = Tile.TileWidth;
+        int widthB = 98;
+        int heightA = Tile.TileHeight;
+        int heightB = 198;
 
     if (tile.tileType == 0)
     {
