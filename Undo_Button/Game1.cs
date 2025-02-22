@@ -25,6 +25,7 @@ public class Game1 : Game
     Texture2D right;
     Texture2D wasd;
     Texture2D ctrlS;
+    Texture2D undoPointSprite;
     Player plr = new Player();
     Camera camera;
     private string filePath = "map.json";
@@ -42,6 +43,8 @@ public class Game1 : Game
     double introTimer = 7;
     Undo quickSave = new Undo();
     Tiles tiles = new Tiles();
+
+    UndoPlace undoPosition = new UndoPlace();
 
     const int bgHeight = 3125;
     const int floorHeight = 400;
@@ -95,6 +98,7 @@ public class Game1 : Game
         right = Content.Load<Texture2D>("Sprites/Right");
         wasd = Content.Load<Texture2D>("Sprites/WASD");
         ctrlS = Content.Load<Texture2D>("Sprites/ctrls");
+        undoPointSprite = Content.Load<Texture2D>("undoPointbgn");
 
         InitMap();
 
@@ -254,14 +258,14 @@ public class Game1 : Game
             _spriteBatch.Draw(bg, new Vector2(8000,0), Color.White);
 
 
-            _spriteBatch.Draw(wasd, new Vector2(0, 1362), Color.White);
-            _spriteBatch.Draw(right, new Vector2(2700, 2162), Color.White);
-            _spriteBatch.Draw(left, new Vector2(3100, 2162), Color.White);
-            _spriteBatch.Draw(up, new Vector2(2700, 1862), Color.White);
-            _spriteBatch.Draw(up, new Vector2(3100, 1862), Color.White);
-            _spriteBatch.Draw(ctrlS, new Vector2(6200, 1062), Color.White);
-            _spriteBatch.Draw(right, new Vector2(6500, 1062), Color.White);
-            _spriteBatch.Draw(down, new Vector2(6800, 1062), Color.White);
+            _spriteBatch.Draw(wasd, new Vector2(0, 1300), Color.White);
+            _spriteBatch.Draw(right, new Vector2(2700, 2100), Color.White);
+            _spriteBatch.Draw(left, new Vector2(3100, 2100), Color.White);
+            _spriteBatch.Draw(up, new Vector2(2700, 1800), Color.White);
+            _spriteBatch.Draw(up, new Vector2(3100, 1800), Color.White);
+            _spriteBatch.Draw(ctrlS, new Vector2(6200, 1000), Color.White);
+            _spriteBatch.Draw(right, new Vector2(6500, 1000), Color.White);
+            _spriteBatch.Draw(down, new Vector2(6800, 1000), Color.White);
 
             _spriteBatch.Draw(playerSprite, plr.Position, Color.White);
 
