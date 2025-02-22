@@ -157,8 +157,7 @@ public class Player
        
         if (position.Y > bgHeight - floorHeight - plrHeight)
         {
-            position.Y = -300;
-            position.X = 0;
+            position = new Vector2(450, 1662);
             jump = 0;
             vel = 0;
             if (jetFuel <= maxJetFuel)
