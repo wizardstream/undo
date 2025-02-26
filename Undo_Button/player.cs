@@ -174,7 +174,7 @@ public class Player
         int heightA = Tile.TileHeight;
         int heightB = 198;
 
-    if (tile.tileType == 0)
+    if (tile.tileType == 0 || tile.tileType == 6)
     {
         return false;
     }

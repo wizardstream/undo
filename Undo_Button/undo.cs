@@ -64,7 +64,7 @@ public class Undo
         }
         if(Keyboard.GetState().IsKeyDown(Keys.Enter))
         {
-            if(rand.Next(0, 21) > 10)
+            if(rand.Next(0, 21) > 5)
             {
                 return;
             }

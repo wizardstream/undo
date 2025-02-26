@@ -29,7 +29,7 @@ public class Game1 : Game
     Player plr = new Player();
     Camera camera;
     private string filePath = "map.json";
-    private string fileName = "level2.json";
+    private string fileName = "level1.json";
     MapManager mapManager = new MapManager();    
     enum Room
     {
@@ -293,7 +293,7 @@ public class Game1 : Game
                         _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Purple);
                         break;
                     case 6:
-                        _spriteBatch.Draw(tileSprite, tile.tilePos, Color.Red);
+                        // no draw
                         break;
                 }                
             }
